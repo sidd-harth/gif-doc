@@ -13,7 +13,7 @@ giphy_response=$(curl -s "https://api.giphy.com/v1/gifs/random?api_key=$GIPHY_AP
 echo $giphy_response
 
 # Extract the GIF URL from the Giphy response
-gif_url=$(echo "$giphy_response" | jq --raw-output .data.image_url)
+gif_url=$(echo "$giphy_response" | jq --raw-output .data.url)
 echo $gif_url
 
 # Create a comment with the GIF on the pull request
