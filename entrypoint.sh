@@ -9,11 +9,11 @@ pull_request_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 echo $pull_request_number
 
 # Use the Giphy API to fetch a random funny GIF
-giphy_response=$(curl -s "https://api.giphy.com/v1/gifs/random?api_key=$GIPHY_API_KEY&tag=funny&rating=g")
+giphy_response=$(curl -s "https://api.humorapi.com/gif/search?api-key=8fbb1119c04e46c1bcfbf3fae20935e6&query=random")
 echo $giphy_response
 
 # Extract the GIF URL from the Giphy response
-gif_url=$(echo "$giphy_response" | jq --raw-output .data.url)
+gif_url=$(echo "$giphy_response" | jq --raw-output .images[0].url)
 echo $gif_url
 
 # Create a comment with the GIF on the pull request
