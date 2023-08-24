@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: entrypoint.sh
+  checksum: d77590ab7bd855e35811f21baa82246c9436adf03db1790652861afb0852d406
+version: ""
