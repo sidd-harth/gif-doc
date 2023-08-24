@@ -1,4 +1,6 @@
 fileignoreconfig:
 - filename: entrypoint.sh
   checksum: d77590ab7bd855e35811f21baa82246c9436adf03db1790652861afb0852d406
+- filename: .github/workflows/test.yml
+  checksum: f24b7467cc73b6fbb4cdc81ae77cf4e3d728ce89f2926ecdb59cb64c626b87b7
 version: ""

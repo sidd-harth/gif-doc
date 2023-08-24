@@ -6,12 +6,15 @@ GIPHY_API_KEY=$2
 
 # Get the pull request number from the GitHub event payload
 pull_request_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+echo $pull_request_number
 
 # Use the Giphy API to fetch a random funny GIF
 giphy_response=$(curl -s "https://api.giphy.com/v1/gifs/random?api_key=$GIPHY_API_KEY&tag=funny&rating=g")
+echo $giphy_response
 
 # Extract the GIF URL from the Giphy response
 gif_url=$(echo "$giphy_response" | jq --raw-output .data.image_url)
+echo $gif_url
 
 # Create a comment with the GIF on the pull request
 comment_response=$(curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
