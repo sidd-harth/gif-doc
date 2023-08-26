@@ -29,7 +29,7 @@ echo URL - $gif_url
 # Create a comment with the GIF on the pull request
 comment_response=$(curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
   -H "Accept: application/vnd.github.v3+json" \
-  -d "{\"body\": \"👋 Hi! Thank you for this contribution! \n PR - #$pull_request_number has been assigned. \n ![GIF]($gif_url)\"}" \
+  -d "{\"body\": \"PR - #$pull_request_number has been assigned. \n ![GIF]($gif_url) \n 🎉 Thank you for this contribution!\"}" \
   "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$pull_request_number/comments")
 
 # Extract and print the comment URL from the comment response
