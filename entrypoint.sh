@@ -9,7 +9,7 @@ pull_request_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 echo $pull_request_number
 
 # Use the Random API to fetch a random funny GIF
-giphy_response=$(curl -s "https://api.giphy.com/v1/gifs/random?api_key=$GIPHY_API_KEY&tag=funny&rating=g")
+giphy_response=$(curl -s "https://api.giphy.com/v1/gifs/random?api_key=$GIPHY_API_KEY&tag=thank you&rating=g")
 echo $giphy_response
 
 # Extract the GIF URL from the Giphy response
@@ -27,9 +27,9 @@ echo $gif_url
 # Create a comment with the GIF on the pull request
 comment_response=$(curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
   -H "Accept: application/vnd.github.v3+json" \
-  -d "{\"body\": \"![GIF]($gif_url)\"}" \
+  -d "{\"body\": \"👋 Hi! Thank you for this contribution! \n PR - #$pull_request_number has been assigned. \n ![GIF]($gif_url)\"}" \
   "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$pull_request_number/comments")
 
 # Extract and print the comment URL from the comment response
-comment_url=$(echo "$comment_response" | jq --raw-output .html_url)
+comment_url=$(echo "$gif_url")
 echo "Comment URL: $comment_url"
