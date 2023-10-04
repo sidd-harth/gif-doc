@@ -4,7 +4,7 @@
 GITHUB_TOKEN=$1
 GIPHY_API_KEY=$2
 
-GHEvent - `cat $GITHUB_EVENT_PATH`
+GHEvent = `cat $GITHUB_EVENT_PATH`
 echo $GHEvent
 
 # Get the pull request number from the GitHub event payload
@@ -26,5 +26,5 @@ comment_response=$(curl -sX POST -H "Authorization: token $GITHUB_TOKEN" \
   "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$pull_request_number/comments")
 
 # Extract and print the comment URL from the comment response
-comment_url=$(echo "$comment_response.url")
+comment_url=$(echo "$comment_response" | jq --raw-output .html_url)
 echo "Comment URL: $comment_url"
